@@ -1,0 +1,31 @@
+                       Zero Mean - GARCH Model Results                        
+==============================================================================
+Dep. Variable:                    WMT   R-squared:                       0.000
+Mean Model:                 Zero Mean   Adj. R-squared:                  0.001
+Vol Model:                      GARCH   Log-Likelihood:                6574.75
+Distribution:                  Normal   AIC:                          -13143.5
+Method:            Maximum Likelihood   BIC:                          -13127.1
+                                        No. Observations:                 1744
+Date:                Thu, Feb 12 2026   Df Residuals:                     1744
+Time:                        00:42:48   Df Model:                            0
+                              Volatility Model                              
+============================================================================
+                 coef    std err          t      P>|t|      95.0% Conf. Int.
+----------------------------------------------------------------------------
+omega      3.2803e-06  1.139e-09   2880.658      0.000 [3.278e-06,3.283e-06]
+alpha[1]       0.0500  3.183e-02      1.571      0.116  [-1.238e-02,  0.112]
+beta[1]        0.8500  3.550e-02     23.946 1.028e-126     [  0.780,  0.920]
+============================================================================
+
+Covariance estimator: robust
+
+=== POST-FIT DIAGNOSTICS ===
+Ljung-Box (std_resid):
+      lb_stat  lb_pvalue
+10   9.997938   0.440674
+20  15.560001   0.743518
+
+Ljung-Box (std_resid²):
+      lb_stat  lb_pvalue
+10   6.368662   0.783398
+20  12.403272   0.901497
