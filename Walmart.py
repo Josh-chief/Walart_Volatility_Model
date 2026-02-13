@@ -9,9 +9,8 @@ from statsmodels.tsa.stattools import adfuller
 from statsmodels.stats.diagnostic import het_arch, acorr_ljungbox
 from statsmodels.graphics.tsaplots import plot_acf
 
-# ===================================================================
 # 1. Data Collection
-# ===================================================================
+
 start_date = "2025-02-10"
 end_date = "2026-02-10"
 
@@ -23,9 +22,8 @@ walmart_returns = np.log(walmart['Close'] / walmart['Close'].shift(1)).dropna()
 print(f"WMT Hourly Log Returns: {len(walmart_returns)} observations")
 print(walmart_returns.describe())
 
-# ===================================================================
 # 2. PRE-FIT DIAGNOSTICS
-# ===================================================================
+
 print("\n" + "="*80)
 print("PRE-FIT DIAGNOSTICS")
 print("="*80)
@@ -49,9 +47,7 @@ print(f'\nEngle\'s ARCH-LM Test (lag=12):')
 print(f'LM Statistic: {arch_test[0]:.4f}')
 print(f'p-value: {arch_test[1]:.6f}')
 
-# ===================================================================
 # 3. GARCH(1,1) Model
-# ===================================================================
 model_walmart = arch_model(walmart_returns, vol='Garch', p=1, q=1, mean='Zero', dist='normal')
 res_walmart = model_walmart.fit(disp='off', show_warning=False)
 
@@ -60,9 +56,7 @@ print("WMT GARCH(1,1) RESULTS")
 print("="*80)
 print(res_walmart.summary())
 
-# ===================================================================
 # 4. POST-FIT DIAGNOSTICS
-# ===================================================================
 print("\n" + "="*80)
 print("POST-FIT DIAGNOSTICS")
 print("="*80)
@@ -79,9 +73,7 @@ lb_sq_resid = acorr_ljungbox(std_resid**2, lags=[10, 20], return_df=True)
 print("\nLjung-Box Test - Squared Standardized Residuals:")
 print(lb_sq_resid)
 
-# ===================================================================
 # 5. Volatility Plot
-# ===================================================================
 plt.figure(figsize=(12, 6))
 plt.plot(res_walmart.conditional_volatility)
 plt.title('Walmart Conditional Volatility - GARCH(1,1)')
